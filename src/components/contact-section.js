@@ -3,12 +3,19 @@ import React, { Component } from "react";
 class ContactSection extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      isEditMode: true,
+    };
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleEdit = this.handleEdit.bind(this);
   }
+
   handleSubmit(e) {
     e.preventDefault();
-    console.log(e);
+    this.toggleEditMode();
   }
-  render() {
+
+  createForm() {
     return (
       <form onSubmit={this.handleSubmit} className="form">
         <label htmlFor="persons-name">Name: </label>
@@ -40,6 +47,24 @@ class ContactSection extends Component {
         />
         <input type="submit" value="✔️" />
       </form>
+    );
+  }
+
+  handleEdit(e) {
+    this.toggleEditMode();
+  }
+
+  toggleEditMode() {
+    this.setState({ isEditMode: !this.state.isEditMode });
+  }
+
+  render() {
+    console.log(this.state.isEditMode);
+    if (this.state.isEditMode) return this.createForm();
+    return (
+      <button className="edit-button" onClick={this.handleEdit}>
+        🖉
+      </button>
     );
   }
 }
