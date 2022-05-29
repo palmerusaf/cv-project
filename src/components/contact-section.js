@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import FormInput from "./form-input.js";
 
 class ContactSection extends Component {
   constructor(props) {
@@ -15,41 +16,6 @@ class ContactSection extends Component {
     this.toggleEditMode();
   }
 
-  createForm() {
-    return (
-      <form onSubmit={this.handleSubmit} className="form">
-        <label htmlFor="persons-name">Name: </label>
-        <input
-          type="text"
-          className="form__input"
-          id="persons-name"
-          name="persons-name"
-          placeholder="Enter your name"
-          required={true}
-        />
-        <label htmlFor="email">Email:</label>
-        <input
-          type="email"
-          className="form__input"
-          id="email"
-          name="email"
-          placeholder="Enter your email"
-          required={true}
-        />
-        <label htmlFor="phone">Phone: </label>
-        <input
-          type="tel"
-          className="form__input"
-          id="phone"
-          name="phone"
-          placeholder="Enter your phone number"
-          required={true}
-        />
-        <input type="submit" value="✔️" />
-      </form>
-    );
-  }
-
   handleEdit(e) {
     this.toggleEditMode();
   }
@@ -60,7 +26,15 @@ class ContactSection extends Component {
 
   render() {
     console.log(this.state.isEditMode);
-    if (this.state.isEditMode) return this.createForm();
+    if (this.state.isEditMode)
+      return (
+        <form onSubmit={this.handleSubmit} className="form">
+          <FormInput type="text" label="Name" />
+          <FormInput type="email" label="Email" />
+          <FormInput type="tel" label="Phone Number" />
+          <input type="submit" value="✔️" />
+        </form>
+      );
     return (
       <button className="edit-button" onClick={this.handleEdit}>
         🖉
