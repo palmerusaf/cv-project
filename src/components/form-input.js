@@ -6,7 +6,7 @@ class FormInput extends Component {
     super(props);
   }
   render() {
-    const { type, label } = this.props;
+    const { type, label, onChange, value } = this.props;
     const kebabLabel = _.kebabCase(label);
     const lowerLabel = _.lowerCase(label);
     return (
@@ -19,6 +19,8 @@ class FormInput extends Component {
           name={kebabLabel}
           placeholder={`Enter your ${lowerLabel}`}
           required={true}
+          onChange={onChange}
+          value={value}
         />
       </label>
     );

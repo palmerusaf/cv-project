@@ -6,9 +6,13 @@ class ContactSection extends Component {
     super(props);
     this.state = {
       isEditMode: true,
+      name: "",
+      email: "",
+      "phone-number": "",
     };
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleEdit = this.handleEdit.bind(this);
+    this.toggleEditMode = this.toggleEditMode.bind(this);
+    this.handleChange = this.handleChange.bind(this);
   }
 
   handleSubmit(e) {
@@ -16,29 +20,52 @@ class ContactSection extends Component {
     this.toggleEditMode();
   }
 
-  handleEdit(e) {
-    this.toggleEditMode();
+  handleChange(e) {
+    const name = e.target.name;
+    const value = e.target.value;
+    this.setState({
+      [name]: value,
+    });
   }
 
-  toggleEditMode() {
+  toggleEditMode(e) {
     this.setState({ isEditMode: !this.state.isEditMode });
   }
 
   render() {
-    console.log(this.state.isEditMode);
     if (this.state.isEditMode)
       return (
         <form onSubmit={this.handleSubmit} className="form">
-          <FormInput type="text" label="Name" />
-          <FormInput type="email" label="Email" />
-          <FormInput type="tel" label="Phone Number" />
+          <FormInput
+            value={this.state.name}
+            onChange={this.handleChange}
+            type="text"
+            label="Name"
+          />
+          <FormInput
+            value={this.state.email}
+            onChange={this.handleChange}
+            type="email"
+            label="Email"
+          />
+          <FormInput
+            value={this.state["phone-number"]}
+            onChange={this.handleChange}
+            type="tel"
+            label="Phone Number"
+          />
           <input type="submit" value="✔️" />
         </form>
       );
     return (
-      <button className="edit-button" onClick={this.handleEdit}>
-        🖉
-      </button>
+      <div className="published">
+        <span>{this.state.name}</span>
+        <span>{this.state.email}</span>
+        <span>{this.state["phone-number"]}</span>
+        <button className="edit-button" onClick={this.toggleEditMode}>
+          🖉
+        </button>
+      </div>
     );
   }
 }
