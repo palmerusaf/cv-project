@@ -62,3 +62,14 @@ body {
   transform: scale(1.1);
 }
 }
+@media screen and (max-width:620px) {
+  .heading{
+    font-size: 1rem;
+    &__logo{
+      width: 100px;
+    }
+  }
+  .form{
+    grid-template-columns: 1fr;
+  }
+}

@@ -70,7 +70,7 @@ class ContactSection extends Component {
       <div className="published">
         {this.publishInputs(this.props)}
         <button className="edit-button" onClick={this.toggleEditMode}>
-          🖉
+        ✏️
         </button>
       </div>
     );
