@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import FormInput from "./form-input.js";
+import _ from "lodash";
 
 class ContactSection extends Component {
   constructor(props) {
@@ -50,7 +51,10 @@ class ContactSection extends Component {
 
   publishInputs({ formInputs }) {
     return formInputs.map((input) => (
-      <span key={input.label} className="published__item">{this.state[input.label]}</span>
+      <label key={input.label} className="published__label">
+        {_.startCase(input.label)}
+        <span className="published__content">{this.state[input.label]}</span>
+      </label>
     ));
   }
 
