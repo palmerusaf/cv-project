@@ -39,12 +39,17 @@ body {
 }
 .published {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(auto, 1fr);
+  grid-template-rows: repeat(2, 1fr);
   grid-gap: .5rem 1rem;
-  &__item {
+  width: 55%;
+  &__label {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    font-weight: bold;
   }
-  &__edit {
+  &__content {
+    font-weight: normal;
   }
 }
 .button {
