@@ -14,32 +14,34 @@ class App extends Component {
       <div className="content">
         <Title />
         <Directions />
-        <CategoryHeading content="Contact" />
-        <PublishableForm
-          formInputs={[
-            { type: "text", label: "name" },
-            { type: "email", label: "email" },
-            { type: "tel", label: "phoneNumber" },
-          ]}
-        />
-        <CategoryHeading content="Education" />
-        <PublishableForm
-          formInputs={[
-            { type: "text", label: "schoolName" },
-            { type: "text", label: "titleOfStudy" },
-            { type: "date", label: "DateOfStudy" },
-          ]}
-        />
-        <CategoryHeading content="Work Experience" />
-        <PublishableForm
-          formInputs={[
-            { type: "text", label: "companyName" },
-            { type: "text", label: "position" },
-            { type: "text", label: "tasksPerformed" },
-            { type: "date", label: "dateFrom" },
-            { type: "date", label: "dateTo" },
-          ]}
-        />
+        <div className="cv-app">
+          <CategoryHeading content="Contact" />
+          <PublishableForm
+            formInputs={[
+              { type: "text", label: "name" },
+              { type: "email", label: "email" },
+              { type: "tel", label: "phoneNumber" },
+            ]}
+          />
+          <CategoryHeading content="Education" />
+          <PublishableForm
+            formInputs={[
+              { type: "text", label: "schoolName" },
+              { type: "text", label: "titleOfStudy" },
+              { type: "date", label: "DateOfStudy" },
+            ]}
+          />
+          <CategoryHeading content="Work Experience" />
+          <PublishableForm
+            formInputs={[
+              { type: "text", label: "companyName" },
+              { type: "text", label: "position" },
+              { type: "text", label: "tasksPerformed" },
+              { type: "date", label: "dateFrom" },
+              { type: "date", label: "dateTo" },
+            ]}
+          />
+        </div>
       </div>
     );
   }

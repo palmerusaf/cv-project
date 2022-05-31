@@ -1,0 +1,59 @@
+html,
+.content,
+#root,
+body {
+  height: 100%;
+  width: 100%;
+  background-color: lightgray;
+}
+.heading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  &__logo {
+    width: 200px;
+  }
+}
+.cv-app {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  align-items: center;
+}
+.category-heading {
+}
+.directions {
+  text-align: center;
+}
+.form {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(auto, 1fr);
+  grid-gap: .5rem 1rem;
+  &__input {
+    justify-content: center;
+  }
+  &__submit {
+    grid-column: 1/-1;
+  }
+}
+.published {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(auto, 1fr);
+  grid-gap: .5rem 1rem;
+  &__item {
+  }
+  &__edit {
+  }
+}
+.button {
+  border: none;
+  border-radius: 15px;
+  padding: .5rem 1rem;
+  background-color: #fff;
+    grid-column: 1/-1;
+&:hover{
+  transform: scale(1.1);
+}
+}

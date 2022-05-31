@@ -8,8 +8,8 @@ class Title extends React.Component {
 
   render() {
     return (
-      <h1 className="title">
-        Welcome to <img src={CompanyLogo} alt="logo" className="logo" />
+      <h1 className="heading">
+        Welcome to <img src={CompanyLogo} alt="logo" className="heading__logo" />
       </h1>
     );
   }

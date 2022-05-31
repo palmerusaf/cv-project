@@ -50,7 +50,7 @@ class ContactSection extends Component {
 
   publishInputs({ formInputs }) {
     return formInputs.map((input) => (
-      <span className="published__item">{this.state[input.label]}</span>
+      <span key={input.label} className="published__item">{this.state[input.label]}</span>
     ));
   }
 
