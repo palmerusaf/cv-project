@@ -27,7 +27,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/palmerusaf/cv-project">
-    <img src="./src/imgs/company-logo.png" alt="Logo" width="80" height="80">
+    <img src="src/imgs/company-logo.jpg" alt="Logo" width="80" height="80">
   </a>
 
 <h3 align="center">React CV Application</h3>
