@@ -28,7 +28,7 @@ class App extends Component {
             formInputs={[
               { type: "text", label: "schoolName" },
               { type: "text", label: "titleOfStudy" },
-              { type: "date", label: "DateOfStudy" },
+              { type: "date", label: "dateOfStudy" },
             ]}
           />
           <CategoryHeading content="Work Experience" />
