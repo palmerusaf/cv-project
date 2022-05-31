@@ -42,6 +42,7 @@ class ContactSection extends Component {
           onChange={this.handleChange}
           type={input.type}
           label={input.label}
+          key={input.label}
         />
       );
     });
