@@ -1,12 +1,10 @@
-import React, { Component } from "react";
 import _ from "lodash";
 
-class FormInput extends Component {
-  constructor(props) {
-    super(props);
-  }
+function FormInput(props) {
+  const { type, onChange, value } = props;
+  const label = enrichLabel(props.label);
 
-  enrichLabel(pLabel) {
+  function enrichLabel(pLabel) {
     const lowerLabel = _.lowerCase(pLabel);
     return {
       lower: lowerLabel,
@@ -16,26 +14,21 @@ class FormInput extends Component {
     };
   }
 
-  render() {
-    const { type, onChange, value } = this.props;
-    const label = this.enrichLabel(this.props.label);
-
-    return (
-      <label htmlFor={label.kebab}>
-        {`${label.title}: `}
-        <input
-          type={type}
-          className="form__input"
-          id={label.kebab}
-          name={label.camel}
-          placeholder={`Enter your ${label.lower}`}
-          required={true}
-          onChange={onChange}
-          value={value}
-        />
-      </label>
-    );
-  }
+  return (
+    <label htmlFor={label.kebab}>
+      {`${label.title}: `}
+      <input
+        type={type}
+        className="form__input"
+        id={label.kebab}
+        name={label.camel}
+        placeholder={`Enter your ${label.lower}`}
+        required={true}
+        onChange={onChange}
+        value={value}
+      />
+    </label>
+  );
 }
 
 export default FormInput;
