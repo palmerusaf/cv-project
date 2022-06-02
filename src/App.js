@@ -5,13 +5,8 @@ import Directions from "./components/directions.js";
 import CategoryHeading from "./components/category-heading.js";
 import PublishableForm from "./components/publishable-form";
 
-class App extends Component {
-  constructor(props) {
-    super(props);
-  }
-  render() {
-    return (
-      <div className="content">
+function App() {
+  return (       <div className="content">
         <Title />
         <Directions />
         <div className="cv-app">
@@ -42,9 +37,7 @@ class App extends Component {
             ]}
           />
         </div>
-      </div>
-    );
-  }
+      </div> );
 }
 
 export default App;
