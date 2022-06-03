@@ -1,46 +1,28 @@
-import React, { Component } from "react";
+import React, { useState, useEffect } from "react";
 import FormInput from "./form-input.js";
 import _ from "lodash";
 
-class ContactSection extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      isEditMode: true,
-    };
-    this.setStateLabels(this.props);
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleChange = this.handleChange.bind(this);
-    this.toggleEditMode = this.toggleEditMode.bind(this);
+function ContactSection(props) {
+  const { inputProps } = props;
+  const [isEditMode, setEditMode] = useState(true);
+  const [formValues, setFormValues] = useState(setInitialFormStates());
+
+  function setInitialFormStates() {
+    return inputProps.reduce((p, n) => ({ ...p, [n.label]: "" }), {});
   }
 
-  setStateLabels({ formInputs }) {
-    formInputs.forEach((input) => (this.state[input.label] = ""));
-  }
-
-  handleSubmit(e) {
-    e.preventDefault();
-    this.toggleEditMode();
-  }
-
-  handleChange(e) {
+  function handleChange(e) {
     const name = e.target.name;
     const value = e.target.value;
-    this.setState({
-      [name]: value,
-    });
+    setFormValues({ ...formValues, [name]: value });
   }
 
-  toggleEditMode(e) {
-    this.setState({ isEditMode: !this.state.isEditMode });
-  }
-
-  addFormInputs({ formInputs }) {
-    return formInputs.map((input) => {
+  function addFormInputs() {
+    return inputProps.map((input) => {
       return (
         <FormInput
-          value={this.state[input.label]}
-          onChange={this.handleChange}
+          value={formValues[input.label]}
+          onChange={handleChange}
           type={input.type}
           label={input.label}
           key={input.label}
@@ -49,32 +31,30 @@ class ContactSection extends Component {
     });
   }
 
-  publishInputs({ formInputs }) {
-    return formInputs.map((input) => (
+  function publishInputs() {
+    return inputProps.map((input) => (
       <label key={input.label} className="published__label">
         {_.startCase(input.label)}
-        <span className="published__content">{this.state[input.label]}</span>
+        <span className="published__content">{formValues[input.label]}</span>
       </label>
     ));
   }
 
-  render() {
-    if (this.state.isEditMode)
-      return (
-        <form onSubmit={this.handleSubmit} className="form">
-          {this.addFormInputs(this.props)}
-          <input type="submit" value="✔️" />
-        </form>
-      );
+  if (isEditMode)
     return (
-      <div className="published">
-        {this.publishInputs(this.props)}
-        <button className="edit-button" onClick={this.toggleEditMode}>
-        ✏️
-        </button>
-      </div>
+      <form onSubmit={() => setEditMode(!isEditMode)} className="form">
+        {addFormInputs()}
+        <input type="submit" value="✔️" />
+      </form>
     );
-  }
+  return (
+    <div className="published">
+      {publishInputs()}
+      <button className="edit-button" onClick={() => setEditMode(!isEditMode)}>
+        ✏️
+      </button>
+    </div>
+  );
 }
 
 export default ContactSection;

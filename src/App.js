@@ -12,7 +12,7 @@ function App() {
       <div className="cv-app">
         <CategoryHeading content="Contact" />
         <PublishableForm
-          formInputs={[
+          inputProps={[
             { type: "text", label: "name" },
             { type: "email", label: "email" },
             { type: "tel", label: "phoneNumber" },
@@ -20,7 +20,7 @@ function App() {
         />
         <CategoryHeading content="Education" />
         <PublishableForm
-          formInputs={[
+          inputProps={[
             { type: "text", label: "schoolName" },
             { type: "text", label: "titleOfStudy" },
             { type: "date", label: "dateOfStudy" },
@@ -28,7 +28,7 @@ function App() {
         />
         <CategoryHeading content="Work Experience" />
         <PublishableForm
-          formInputs={[
+          inputProps={[
             { type: "text", label: "companyName" },
             { type: "text", label: "position" },
             { type: "text", label: "tasksPerformed" },
